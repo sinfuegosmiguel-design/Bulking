@@ -89,6 +89,7 @@ textarea{width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:
     </div>
     <label>Tipo de volumen (% del peso por semana)</label>
     <div class="seg" id="seg">
+      <label><input type="radio" name="level" value="muy-leve"><span>Muy leve<br>0,15 %</span></label>
       <label><input type="radio" name="level" value="leve"><span>Leve<br>0,25 %</span></label>
       <label><input type="radio" name="level" value="regular"><span>Regular<br>0,5 %</span></label>
       <label><input type="radio" name="level" value="agresivo"><span>Agresivo<br>0,75 %</span></label>
@@ -147,7 +148,7 @@ textarea{width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:
 
 <script>
 const KEY = 'volumen-limpio-v1';
-const RATE = { leve: 0.25, regular: 0.5, agresivo: 0.75 };
+const RATE = { 'muy-leve': 0.15, leve: 0.25, regular: 0.5, agresivo: 0.75 };
 const $ = id => document.getElementById(id);
 const iso = d => d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
 const addDays = (s, n) => { const d = new Date(s + 'T00:00:00'); d.setDate(d.getDate() + n); return iso(d); };
