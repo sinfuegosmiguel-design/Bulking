@@ -2,7 +2,7 @@
 // Si cambias algún archivo de la app, sube el número de VERSION para que los móviles se actualicen.
 const VERSION = 'volumen-v6';
 const FILES = ['./', 'index.html', 'manifest.webmanifest', 'vendor/chart.umd.js', 'vendor/supabase.js',
-  'icons/icon-192.png', 'icons/icon-512.png', 'Style.css', 'app.js', 'icons/icon-maskable-512.png'];
+  'icons/icon-192.png', 'icons/icon-512.png', 'style.css', 'app.js', 'icons/icon-maskable-512.png'];
 
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(VERSION).then(c => c.addAll(FILES)));
