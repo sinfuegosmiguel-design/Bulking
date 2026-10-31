@@ -308,3 +308,37 @@ fill(); render();
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
 }
+// ---- Pantalla de perfil ----
+const pmsg = t => { const m = $('pMsg'); m.hidden = !t; m.textContent = t || ''; };
+function route() {
+  const perfil = location.hash === '#perfil';
+  $('screenHome').hidden = perfil;
+  $('screenPerfil').hidden = !perfil;
+  window.scrollTo(0, 0);
+  if (perfil) loadProfile();
+}
+async function loadProfile() {
+  pmsg('');
+  $('pSave').disabled = !user;
+  if (!user) { $('pHint').textContent = 'Entra en tu cuenta para completar tu perfil.'; return; }
+  $('pHint').textContent = 'Todos los campos son opcionales.';
+  const { data, error } = await sb.from('profiles').select('age,country,gender').maybeSingle();
+  if (error) { pmsg('No se pudo cargar el perfil: ' + error.message); return; }
+  $('pAge').value = data && data.age != null ? data.age : '';
+  $('pCountry').value = data && data.country ? data.country : '';
+  $('pGender').value = data && data.gender ? data.gender : '';
+}
+$('pSave').onclick = async () => {
+  if (!user) return;
+  const a = $('pAge').value.trim(), age = a === '' ? null : Math.round(Number(a));
+  if (age !== null && !(age >= 10 && age <= 120)) { pmsg('La edad debe estar entre 10 y 120.'); return; }
+  if (!navigator.onLine) { pmsg('Necesitas conexión a internet para guardar el perfil.'); return; }
+  pmsg('Guardando…');
+  const row = { user_id: user.id, age, country: $('pCountry').value.trim() || null,
+    gender: $('pGender').value || null, updated_at: new Date().toISOString() };
+  const { error } = await sb.from('profiles').upsert(row, { onConflict: 'user_id' });
+  pmsg(error ? 'No se pudo guardar: ' + error.message : 'Perfil guardado.');
+};
+window.addEventListener('hashchange', route);
+if (sb) sb.auth.onAuthStateChange(() => setTimeout(() => { if (location.hash === '#perfil') loadProfile(); }, 0));
+route();
