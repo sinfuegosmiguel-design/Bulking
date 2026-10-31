@@ -15,8 +15,8 @@
 </head>
 <body>
 <main>
-<h1>Volumen limpio</h1>
-
+  <div id="screenHome">
+<div class="top"><h1>Volumen limpio</h1><a class="link" href="#perfil">Perfil</a></div>
 
 <section class="card acct">
   <div id="acctOut">
@@ -102,6 +102,27 @@
     <textarea id="paste" rows="4" spellcheck="false"></textarea>
     <div class="btns"><button class="ghost" id="impText">Importar texto</button></div>
     <div class="status" id="bkMsg" role="status" hidden></div>
+  </section>
+</div>
+    </div>
+<div id="screenPerfil" hidden>
+  <div class="top"><h1>Mi perfil</h1><a class="link" href="#">← Volver</a></div>
+  <section class="card">
+    <p class="mut" id="pHint"></p>
+    <div class="row">
+      <div><label for="pAge">Edad</label><input id="pAge" type="number" min="10" max="120" step="1" inputmode="numeric"></div>
+      <div><label for="pCountry">País</label><input id="pCountry" type="text" maxlength="60" autocomplete="country-name"></div>
+    </div>
+    <label for="pGender">Género</label>
+    <select id="pGender">
+      <option value="">Sin indicar</option>
+      <option value="mujer">Mujer</option>
+      <option value="hombre">Hombre</option>
+      <option value="otro">Otro</option>
+      <option value="prefiero-no-decir">Prefiero no decirlo</option>
+    </select>
+    <div class="btns"><button id="pSave">Guardar perfil</button></div>
+    <div class="status" id="pMsg" role="status" hidden></div>
   </section>
 </div>
 </main>
