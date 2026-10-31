@@ -1,6 +1,6 @@
 // Service worker: guarda los archivos de la app para que abra sin internet.
 // Si cambias algún archivo de la app, sube el número de VERSION para que los móviles se actualicen.
-const VERSION = 'volumen-v7';
+const VERSION = 'volumen-v8';
 const FILES = ['./', 'index.html', 'manifest.webmanifest', 'vendor/chart.umd.js', 'vendor/supabase.js',
   'icons/icon-192.png', 'icons/icon-512.png', 'style.css', 'app.js', 'icons/icon-maskable-512.png'];
 
