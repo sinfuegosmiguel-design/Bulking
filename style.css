@@ -36,3 +36,7 @@ li button{padding:2px 9px;background:transparent;color:var(--mut);border-color:v
 .acct{margin-bottom:14px}
 textarea{width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:0.85rem ui-monospace,Menlo,Consolas,monospace;resize:vertical}
 @media (max-width:720px){.grid{grid-template-columns:1fr}.big{font-size:2.5rem}}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:14px}
+.top h1{margin:0}
+.link{padding:8px 14px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--ink);text-decoration:none}
+input[type=text],select{width:100%;padding:9px 10px;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink);font:inherit}
